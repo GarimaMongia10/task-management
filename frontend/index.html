@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow | Modern SaaS Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <!-- Auth Container (Shown by default) -->
+    <div id="authPage" class="auth-container">
+        <div class="auth-navbar">
+            <div class="sidebar-header">
+                <div class="logo-box">
+                    <i data-lucide="layout-grid" class="logo-icon"></i>
+                </div>
+                <span class="logo-text">TaskFlow</span>
+            </div>
+            <div class="auth-nav-links">
+                <button class="text-btn" id="showLoginNav">Sign In</button>
+                <button class="primary-btn sm" id="showSignupNav">Get Started</button>
+            </div>
+        </div>
+
+        <div class="auth-content">
+            <!-- Login Section -->
+            <div id="loginSection" class="auth-card active">
+                <div class="auth-header">
+                    <div class="logo-box lg">
+                        <i data-lucide="layout-grid"></i>
+                    </div>
+                    <h1>Welcome to TaskFlow</h1>
+                    <p>The modern standard for productivity and tracking.</p>
+                </div>
+                
+                <form id="loginForm" class="auth-form">
+                    <div class="field-group">
+                        <label>Email Address</label>
+                        <div class="input-with-icon">
+                            <i data-lucide="mail"></i>
+                            <input type="email" placeholder="admin@example.com" required>
+                        </div>
+                    </div>
+                    <div class="field-group">
+                        <div style="display: flex; justify-content: space-between;">
+                            <label>Password</label>
+                            <a href="#" class="forgot-link">Forgot password?</a>
+                        </div>
+                        <div class="input-with-icon">
+                            <i data-lucide="lock"></i>
+                            <input type="password" placeholder="••••••••" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="auth-submit-btn">
+                        Sign In <i data-lucide="arrow-right"></i>
+                    </button>
+                </form>
+                <p class="auth-footer">Don't have an account? <a href="#" id="toSignup">Create one</a></p>
+            </div>
+
+            <!-- Signup Section -->
+            <div id="signupSection" class="auth-card hidden">
+                <div class="auth-header">
+                    <h1>Create your account</h1>
+                    <p>Join thousands of users resolving tasks faster than ever.</p>
+                </div>
+                
+                <form id="signupForm" class="auth-form">
+                    <div class="field-group">
+                        <label>Full Name</label>
+                        <div class="input-with-icon">
+                            <i data-lucide="user"></i>
+                            <input type="text" placeholder="John Doe" required>
+                        </div>
+                    </div>
+                    <div class="field-group">
+                        <label>Email Address</label>
+                        <div class="input-with-icon">
+                            <i data-lucide="mail"></i>
+                            <input type="email" placeholder="admin@example.com" required>
+                        </div>
+                    </div>
+                    <div class="grid-2">
+                        <div class="field-group">
+                            <label>Password</label>
+                            <div class="input-with-icon">
+                                <i data-lucide="lock"></i>
+                                <input type="password" placeholder="••••••••" required>
+                            </div>
+                        </div>
+                        <div class="field-group">
+                            <label>Confirm</label>
+                            <div class="input-with-icon">
+                                <i data-lucide="lock"></i>
+                                <input type="password" placeholder="••••••••" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="auth-benefits">
+                        <div class="benefit"><i data-lucide="check-circle"></i> Instant dashboard access</div>
+                        <div class="benefit"><i data-lucide="check-circle"></i> Real-time tracking notifications</div>
+                    </div>
+
+                    <button type="submit" class="auth-submit-btn">
+                        Get Started <i data-lucide="arrow-right"></i>
+                    </button>
+                </form>
+                <p class="auth-footer">Already have an account? <a href="#" id="toLogin">Sign In</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Container (Hidden by default) -->
+    <div id="appPage" class="dashboard-container hidden">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-box">
+                    <i data-lucide="layout-grid" class="logo-icon"></i>
+                </div>
+                <span class="logo-text">TaskFlow</span>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active">
+                    <i data-lucide="layout-dashboard"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i data-lucide="check-square"></i>
+                    <span>My Tasks</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i data-lucide="calendar"></i>
+                    <span>Schedule</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i data-lucide="users"></i>
+                    <span>Team</span>
+                </a>
+                <div class="nav-divider"></div>
+                <a href="#" class="nav-item">
+                    <i data-lucide="settings"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#" class="nav-item logout">
+                    <i data-lucide="log-out"></i>
+                    <span>Logout</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="avatar">RB</div>
+                    <div class="user-info">
+                        <p class="user-name">Riya Bhatia</p>
+                        <p class="user-role">ADMIN</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <header class="top-header">
+                <div class="search-bar">
+                    <i data-lucide="search"></i>
+                    <input type="text" placeholder="Search tasks...">
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn" title="Notifications">
+                        <i data-lucide="bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+                    <button id="refreshButton" class="icon-btn" title="Sync Data">
+                        <i data-lucide="refresh-cw"></i>
+                    </button>
+                    <button class="primary-btn" id="openFormBtn">
+                        <i data-lucide="plus"></i>
+                        <span>New Task</span>
+                    </button>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <!-- Dashboard Page -->
+                <div id="dashboardPage" class="page active">
+                    <div class="page-header">
+                        <div>
+                            <h1>SaaS Dashboard</h1>
+                            <p class="page-subtitle">Real-time analytics and task lifecycle tracking</p>
+                        </div>
+                    </div>
+
+                    <!-- Stats Overview -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <p class="stat-label">TOTAL TASKS</p>
+                                <h2 class="stat-value" id="taskCount">0</h2>
+                                <span class="stat-trend positive">
+                                    <i data-lucide="trending-up"></i> +12% since last week
+                                </span>
+                            </div>
+                            <div class="stat-icon-box purple">
+                                <i data-lucide="clipboard-list"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <p class="stat-label">PENDING</p>
+                                <h2 class="stat-value" id="pendingCount">0</h2>
+                                <span class="stat-trend neutral">
+                                    <i data-lucide="minus"></i> No change
+                                </span>
+                            </div>
+                            <div class="stat-icon-box orange">
+                                <i data-lucide="clock"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <p class="stat-label">COMPLETED</p>
+                                <h2 class="stat-value" id="completedCount">0</h2>
+                                <span class="stat-trend positive">
+                                    <i data-lucide="trending-up"></i> +5%
+                                </span>
+                            </div>
+                            <div class="stat-icon-box green">
+                                <i data-lucide="check-circle"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <section class="tasks-section card">
+                            <div class="section-header">
+                                <h2>Active Tasks</h2>
+                                <span id="loadingIndicator" class="badge hidden">Syncing...</span>
+                            </div>
+                            <div id="taskListDashboard" class="task-list"></div>
+                        </section>
+
+                        <div class="dashboard-sidebar">
+                            <section class="activity-section card">
+                                <h3>Recent Activity</h3>
+                                <div class="activity-list">
+                                    <div class="activity-item">
+                                        <div class="activity-icon plus">
+                                            <i data-lucide="plus"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <p>Updated pipeline configurations</p>
+                                            <span>Just now</span>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon check">
+                                            <i data-lucide="check"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <p>Completed "JWT Authentication"</p>
+                                            <span>2h ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- My Tasks Page -->
+                <div id="tasksPage" class="page">
+                    <div class="page-header">
+                        <h1>My Tasks</h1>
+                        <p class="page-subtitle">Manage and organize your personal workspace</p>
+                    </div>
+                    <section class="card">
+                        <div id="taskListFull" class="task-list"></div>
+                    </section>
+                </div>
+
+                <!-- Schedule Page -->
+                <div id="schedulePage" class="page">
+                    <div class="page-header">
+                        <h1>Project Milestones</h1>
+                        <p class="page-subtitle">Track your team's roadmap and upcoming deadlines</p>
+                    </div>
+                    <div class="card">
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon check" style="background: var(--info); color: white;">
+                                    <i data-lucide="rocket"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p>Q2 Release - Beta Phase</p>
+                                    <span>Due: May 25, 2026</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon" style="background: var(--primary-soft); color: var(--primary);">
+                                    <i data-lucide="shield-check"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p>Security Audit & Patching</p>
+                                    <span>Due: June 02, 2026</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon" style="background: rgba(236, 72, 153, 0.1); color: #ec4899;">
+                                    <i data-lucide="users"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p>Team Onboarding - Batch 4</p>
+                                    <span>Due: June 15, 2026</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Page -->
+                <div id="teamPage" class="page">
+                    <div class="page-header">
+                        <h1>Engineering Team</h1>
+                        <p class="page-subtitle">Manage your collaborators and project access</p>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="user-profile">
+                                <div class="avatar">RB</div>
+                                <div class="user-info">
+                                    <p class="user-name">Riya Bhatia</p>
+                                    <p class="user-role">Lead Administrator</p>
+                                </div>
+                            </div>
+                            <div class="badge">Online</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="user-profile">
+                                <div class="avatar" style="background: var(--info)">JD</div>
+                                <div class="user-info">
+                                    <p class="user-name">John Doe</p>
+                                    <p class="user-role">Senior DevOps Engineer</p>
+                                </div>
+                            </div>
+                            <div class="badge" style="background: var(--bg); color: var(--text-muted)">Away</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="user-profile">
+                                <div class="avatar" style="background: var(--success)">AK</div>
+                                <div class="user-info">
+                                    <p class="user-name">Arjun Kapoor</p>
+                                    <p class="user-role">Full Stack Developer</p>
+                                </div>
+                            </div>
+                            <div class="badge">Online</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Page -->
+                <div id="settingsPage" class="page">
+                    <div class="page-header">
+                        <h1>Workspace Settings</h1>
+                        <p class="page-subtitle">Personalize your TaskFlow experience</p>
+                    </div>
+                    <div class="dashboard-grid" style="grid-template-columns: 1fr;">
+                        <section class="card">
+                            <h3 style="margin-bottom: 20px;">System Preferences</h3>
+                            <div style="display: flex; flex-direction: column; gap: 20px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 15px; border-bottom: 1px solid var(--surface-border);">
+                                    <div>
+                                        <p style="font-weight: 700;">Automatic Dark Mode</p>
+                                        <p style="font-size: 0.85rem; color: var(--text-muted);">Switch themes based on system settings</p>
+                                    </div>
+                                    <input type="checkbox" checked style="width: 20px; height: 20px;">
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 15px; border-bottom: 1px solid var(--surface-border);">
+                                    <div>
+                                        <p style="font-weight: 700;">Real-time Notifications</p>
+                                        <p style="font-size: 0.85rem; color: var(--text-muted);">Get desktop alerts for due tasks</p>
+                                    </div>
+                                    <input type="checkbox" checked style="width: 20px; height: 20px;">
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div>
+                                        <p style="font-weight: 700;">Project Public Visibility</p>
+                                        <p style="font-size: 0.85rem; color: var(--text-muted);">Allow non-team members to view tasks</p>
+                                    </div>
+                                    <input type="checkbox" style="width: 20px; height: 20px;">
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- New Task Modal -->
+    <div id="taskModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create New Task</h2>
+                <button class="close-modal" id="closeModalBtn">&times;</button>
+            </div>
+            <form id="taskForm" class="task-form">
+                <div class="field-group">
+                    <label for="taskInput">Task Title</label>
+                    <input id="taskInput" type="text" placeholder="What needs to be done?" required>
+                </div>
+                <div class="field-group">
+                    <label for="reminderInput">Context / Notes</label>
+                    <input id="reminderInput" type="text" placeholder="Add some details...">
+                </div>
+                <div class="field-group">
+                    <label for="startByInput">Deadline</label>
+                    <input id="startByInput" type="datetime-local" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="icon-btn" id="cancelBtn">Cancel</button>
+                    <button type="submit" id="addButton" class="primary-btn">
+                        <i data-lucide="plus"></i>
+                        Create Task
+                    </button>
+                </div>
+            </form>
+            <p id="message" class="message hidden"></p>
+        </div>
+    </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
