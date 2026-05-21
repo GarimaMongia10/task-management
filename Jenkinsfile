@@ -5,7 +5,7 @@ pipeline {
 
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/GarimaMongia10/task-management'
+                git branch: 'main', url: 'https://github.com/GarimaMongia10/task-management.git'
             }
         }
 
