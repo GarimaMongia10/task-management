@@ -38,10 +38,11 @@ services:
       - "8082:8080"
 
   prometheus:
-    image: prom/prometheus:latest
+    build:
+      context: .
+      dockerfile: prometheus.Dockerfile
     restart: always
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus_data:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'

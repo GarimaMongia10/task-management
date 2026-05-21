@@ -15,6 +15,12 @@ pipeline {
             }
         }
 
+        stage('Cleanup Previous Stack') {
+            steps {
+                sh 'docker-compose down --remove-orphans || true'
+            }
+        }
+
         stage('Docker Build') {
             steps {
                 sh 'docker-compose build'
