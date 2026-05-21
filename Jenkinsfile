@@ -24,26 +24,53 @@ pipeline {
                     ls -la
                     docker --version || true
                     docker compose version || true
-                    docker compose -f docker-compose.yml -f docker-compose.ci.yml config
+                    docker compose config
                 '''
             }
         }
 
         stage('Cleanup Previous Stack') {
             steps {
-                sh 'docker compose -f docker-compose.yml -f docker-compose.ci.yml down --remove-orphans || true'
+                withEnv([
+                    'FRONTEND_PORT=0',
+                    'BACKEND_PORT=0',
+                    'MYSQL_PORT=0',
+                    'ADMINER_PORT=0',
+                    'PROMETHEUS_PORT=0',
+                    'GRAFANA_PORT=0'
+                ]) {
+                    sh 'docker compose down --remove-orphans || true'
+                }
             }
         }
 
         stage('Docker Build') {
             steps {
-                sh 'docker compose -f docker-compose.yml -f docker-compose.ci.yml build'
+                withEnv([
+                    'FRONTEND_PORT=0',
+                    'BACKEND_PORT=0',
+                    'MYSQL_PORT=0',
+                    'ADMINER_PORT=0',
+                    'PROMETHEUS_PORT=0',
+                    'GRAFANA_PORT=0'
+                ]) {
+                    sh 'docker compose build'
+                }
             }
         }
 
         stage('Deploy Containers') {
             steps {
-                sh 'docker compose -f docker-compose.yml -f docker-compose.ci.yml up -d'
+                withEnv([
+                    'FRONTEND_PORT=0',
+                    'BACKEND_PORT=0',
+                    'MYSQL_PORT=0',
+                    'ADMINER_PORT=0',
+                    'PROMETHEUS_PORT=0',
+                    'GRAFANA_PORT=0'
+                ]) {
+                    sh 'docker compose up -d'
+                }
             }
         }
     }
