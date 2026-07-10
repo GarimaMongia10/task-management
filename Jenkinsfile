@@ -36,12 +36,12 @@ pipeline {
         stage('Cleanup Previous Stack') {
             steps {
                 withEnv([
-                    'FRONTEND_PORT=0',
-                    'BACKEND_PORT=0',
-                    'MYSQL_PORT=0',
-                    'ADMINER_PORT=0',
-                    'PROMETHEUS_PORT=0',
-                    'GRAFANA_PORT=0'
+                    'FRONTEND_PORT=3002',
+                    'BACKEND_PORT=8080',
+                    'MYSQL_PORT=3307',
+                    'ADMINER_PORT=8082',
+                    'PROMETHEUS_PORT=9090',
+                    'GRAFANA_PORT=3004'
                 ]) {
                     sh 'docker compose down --remove-orphans || true'
                 }
@@ -51,12 +51,12 @@ pipeline {
         stage('Docker Build') {
             steps {
                 withEnv([
-                    'FRONTEND_PORT=0',
-                    'BACKEND_PORT=0',
-                    'MYSQL_PORT=0',
-                    'ADMINER_PORT=0',
-                    'PROMETHEUS_PORT=0',
-                    'GRAFANA_PORT=0'
+                    'FRONTEND_PORT=3002',
+                    'BACKEND_PORT=8080',
+                    'MYSQL_PORT=3307',
+                    'ADMINER_PORT=8082',
+                    'PROMETHEUS_PORT=9090',
+                    'GRAFANA_PORT=3004'
                 ]) {
                     sh 'docker compose build'
                 }
@@ -66,12 +66,12 @@ pipeline {
         stage('Deploy Containers') {
             steps {
                 withEnv([
-                    'FRONTEND_PORT=0',
-                    'BACKEND_PORT=0',
-                    'MYSQL_PORT=0',
-                    'ADMINER_PORT=0',
-                    'PROMETHEUS_PORT=0',
-                    'GRAFANA_PORT=0'
+                    'FRONTEND_PORT=3002',
+                    'BACKEND_PORT=8080',
+                    'MYSQL_PORT=3307',
+                    'ADMINER_PORT=8082',
+                    'PROMETHEUS_PORT=9090',
+                    'GRAFANA_PORT=3004'
                 ]) {
                     sh 'docker compose up -d'
                 }
